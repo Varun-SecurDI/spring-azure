@@ -33,11 +33,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-starter-tomcat</artifactId>
-                        <scope>provided</scope>
-                </dependency>
                        <!-- https://mvnrepository.com/artifact/javax.servlet/jsp-api -->
 <dependency>
     <groupId>javax.servlet</groupId>
@@ -45,13 +40,6 @@
     <version>2.0</version>
     <scope>provided</scope>
 </dependency>
-
-                     <!-- To compile JSP files -->
-                <dependency>
-                       <groupId>org.apache.tomcat.embed</groupId>
-                       <artifactId>tomcat-embed-jasper</artifactId>
-                       <scope>provided</scope>
-                </dependency>
 		<!-- https://mvnrepository.com/artifact/org.json/json -->
                 <dependency>
                 <groupId>org.json</groupId>
