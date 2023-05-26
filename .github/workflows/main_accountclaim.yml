@@ -29,7 +29,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/azure-0.0.1-SNAPSHOT.war'
+          path: '${{ github.workspace }}/target/*.war'
 
   deploy:
     runs-on: windows-latest
@@ -43,7 +43,7 @@ jobs:
        uses: actions/download-artifact@v2
        with:
         name: java-app
-        path: '${{ github.workspace }}/target/azure-0.0.1-SNAPSHOT.war'
+        path: '${{ github.workspace }}/target/*.war'
   
      - name: Deploy to Azure Web App
        id: deploy-to-webapp
