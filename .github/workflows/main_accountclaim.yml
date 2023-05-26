@@ -23,12 +23,13 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
+        
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.war'
+          path: '${{ github.workspace }}/target/azure-0.0.1-SNAPSHOT.war'
 
   deploy:
     runs-on: windows-latest
@@ -38,10 +39,16 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
+     - name: Download artifact from build job
+       uses: actions/download-artifact@v2
+       with:
+        name: java-app
+        path: '${{ github.workspace }}/target/azure-0.0.1-SNAPSHOT.war'
+  
+     - name: Deploy to Azure Web App
+       id: deploy-to-webapp
+       uses: azure/webapps-deploy@v2
+       with:
           app-name: 'accountclaim'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E40AFF95415F4AF485D9FE869E5BFFAC }}
