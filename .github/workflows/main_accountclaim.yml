@@ -25,17 +25,7 @@ jobs:
         run: |
           mvn clean install 
           mvn -B package --file pom.xml
-          
-      - name: List the directory
-        run: ls -a
-        
-      - name: List the target directory
-        run: |
-          cd target
-          ls -a
-        
-        
-
+                        
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
