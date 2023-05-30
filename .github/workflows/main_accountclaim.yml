@@ -22,7 +22,19 @@ jobs:
           java-version: '17'
 
       - name: Build with Maven
-        run: mvn clean install --file pom.xml
+        run: |
+          mvn clean install 
+          mvn -B package --file pom.xml
+          
+      - name: List the directory
+        run: ls -a
+        
+      - name: List the target directory
+        run: |
+          cd target
+          ls -a
+        
+        
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -42,7 +54,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.war'
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
